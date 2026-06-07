@@ -1,0 +1,14 @@
+﻿# Pavanbabu-014.github.io
+
+Personal GitHub Pages portfolio for Pavanbabu Arjunamahanthi.
+
+## Publish on GitHub Pages
+
+1. Create a public repository named `Pavanbabu-014.github.io` under the GitHub account `Pavanbabu-014`.
+2. Upload `index.html`, `.nojekyll`, and this `README.md` to the repository root.
+3. In GitHub, open **Settings > Pages** and confirm the source is the `main` branch root.
+4. The site will publish at `https://Pavanbabu-014.github.io/`.
+
+## Local Preview
+
+Open `index.html` in a browser. The site is a static single-page portfolio and does not require a build step.
