@@ -20,16 +20,16 @@
     body{margin:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;background:var(--bg); color:var(--ink); line-height:1.62}
     a{color:inherit} img{display:block;max-width:100%}
     .wrap{width:min(var(--max),92vw); margin:auto}
-    .skip{position:absolute;left:-999px;top:12px;background:var(--ink);color:white;padding:.75rem 1rem;border-radius:12px;z-index:999}
-    .skip:focus{left:12px}
+    .skip{position:absolute;left:12px;top:12px;transform:translateX(-200vw);background:var(--ink);color:white;padding:.75rem 1rem;border-radius:12px;z-index:999}
+    .skip:focus{transform:none}
     .site-header{position:sticky;top:0;z-index:50;background:rgba(246,242,236,.92);backdrop-filter:blur(18px);border-bottom:1px solid rgba(214,206,195,.92)}
-    .nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:22px}
+    .nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:18px}
     .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
     .mark{width:44px;height:44px;border-radius:16px;background:linear-gradient(135deg,#3f3833,#7a6d5f);color:white;display:grid;place-items:center;font-weight:900;letter-spacing:-.08em}
     .brand strong{display:block;font-size:1rem;letter-spacing:-.02em}
     .brand span:last-child{display:block;font-size:.78rem;color:var(--muted);font-weight:750}
-    .nav-links{display:flex;align-items:center;gap:8px}
-    .nav-links a{text-decoration:none;font-size:.92rem;font-weight:750;color:#3f3833;padding:.65rem .8rem;border-radius:999px}
+    .nav-links{display:flex;align-items:center;gap:5px;margin-left:auto;background:rgba(255,255,255,.5);border:1px solid rgba(214,206,195,.7);border-radius:999px;padding:6px}
+    .nav-links a{text-decoration:none;font-size:.88rem;font-weight:800;color:#3f3833;padding:.58rem .72rem;border-radius:999px;white-space:nowrap}
     .nav-links a:hover{background:rgba(235,228,218,.92)}
     .nav-tools{display:flex;align-items:center;gap:10px}
     .cv-chip{width:52px;height:52px;border:1px solid var(--line);border-radius:50%;background:#fff;color:var(--ink);display:grid;place-items:center;text-decoration:none;font-weight:900;transition:.22s}
@@ -160,6 +160,7 @@
     .reveal{opacity:0;transform:translateY(16px);transition:.55s}
     .reveal.visible{opacity:1;transform:none}
     @media(max-width:980px){.hero-copy{order:1}.profile-card{order:2}}
+    @media(max-width:1100px){.nav-links a{font-size:.82rem;padding:.52rem .58rem}.brand strong{font-size:.94rem}}
     @media(max-width:980px){.menu{display:block}.nav{gap:12px}.nav-links{display:none;position:absolute;top:78px;left:4vw;right:4vw;background:#ffffff;border:1px solid var(--line);border-radius:22px;padding:14px;box-shadow:var(--shadow);flex-direction:column;align-items:flex-start}.nav-links.open{display:flex}.hero,.interact,.contact-card{grid-template-columns:1fr}.metrics,.logos,.role-grid,.cards,.pub-list{grid-template-columns:1fr 1fr}.tab-list{position:static;grid-template-columns:1fr 1fr}.cv-chip{width:46px;height:46px}}
     @media(max-width:640px){.hero-copy,.profile-card,.contact-card{padding:22px;border-radius:26px}.profile-top{grid-template-columns:1fr}.portrait{width:100%;height:auto;aspect-ratio:1/1;max-width:260px;margin:auto}.focus-grid,.metrics,.logos,.role-grid,.cards,.pub-list,.tab-list,.capability-visuals,.modal-content-grid,.award-card{grid-template-columns:1fr}.section-head{display:block}.search{min-width:0;width:100%}.hero-actions .btn,.contact-actions .btn{width:100%}.modal-body{padding:20px}.modal-gallery img{max-height:360px}.brand span:last-child{display:none}.nav-tools{gap:6px}.cv-chip{width:42px;height:42px}}
   
@@ -207,8 +208,17 @@
     .tab-btn.active,.filter.active{background:#3f3833;border-color:#3f3833}
     .paper-link{background:#111111}
     .contact-card{background:linear-gradient(135deg,#ffffff,#eae5dc);border-color:#d6cec3}
+    .hero{background:rgba(255,255,255,.97);border:1px solid #d6cec3;border-radius:28px;box-shadow:0 20px 58px rgba(34,30,28,.10);padding:28px;grid-template-columns:minmax(390px,.92fr) minmax(500px,1.08fr);align-items:start}
+    .hero-copy,.profile-card{background:transparent;border:0;box-shadow:none;border-radius:0}
+    .hero-copy{padding:16px 8px 8px 18px}
+    .profile-card{padding:0}
+    .profile-top{grid-auto-rows:244px}
+    .focus-grid{margin-top:8px}
+    .focus-tile{min-height:110px}
+    .profile-summary{border:1px solid #e2d8cc}
     @media(max-width:980px){.logos{grid-template-columns:1fr}.role-grid{grid-template-columns:1fr 1fr}.logo-card{min-height:190px}.logo-card img{object-position:center center;margin:auto}}
-    @media(max-width:640px){.role-grid{grid-template-columns:1fr}.heading-link{width:34px;height:34px;font-size:1rem}}
+    @media(max-width:980px){.hero{grid-template-columns:1fr;padding:24px}.hero-copy{padding:10px 0 0}.profile-card{padding:0}.profile-top{grid-auto-rows:240px}}
+    @media(max-width:640px){.role-grid{grid-template-columns:1fr}.heading-link{width:34px;height:34px;font-size:1rem}.hero{padding:18px;border-radius:24px}.hero .hero-copy,.hero .profile-card{padding:0}.hero .profile-top{grid-template-columns:1fr;grid-auto-rows:auto}.hero .portrait{width:100%;height:auto;aspect-ratio:1/1;max-width:260px;margin:auto}.hero .profile-summary{min-height:220px}.hero .focus-grid{grid-template-columns:1fr}}
     
   </style>
 </head>
@@ -219,7 +229,7 @@
       <a class="brand" href="#top" aria-label="Pavanbabu Arjunamahanthi home"><span class="mark">PA</span><span><strong>Pavanbabu Arjunamahanthi</strong><span>Semiconductor Packaging &middot; Metrology &middot; FA</span></span></a>
       <button class="menu" type="button" aria-expanded="false">Menu</button>
       <div class="nav-links">
-        <a href="#affiliations">Affiliations</a><a href="#technical-skills">Technical skills</a><a href="#projects">Projects</a><a href="#awards">Awards</a><a href="#publications">Publications</a><a href="#contact">Contact</a>
+        <a href="#affiliations">About</a><a href="#experience">Experience</a><a href="#technical-skills">Skills</a><a href="#projects">Projects</a><a href="#publications">Publications</a><a href="#awards">Awards</a><a href="#contact">Contact</a>
       </div>
       <div class="nav-tools" aria-label="Quick actions">
         <a class="cv-chip" href="assets/Pavanbabu-Arjunamahanthi-CV.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open CV">CV</a>
