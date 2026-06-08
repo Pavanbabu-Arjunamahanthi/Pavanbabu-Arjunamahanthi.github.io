@@ -38,7 +38,7 @@
     .sponsor-toggle{width:52px;height:52px;border:1px solid var(--line);border-radius:50%;background:#fff;display:grid;place-items:center;gap:4px;cursor:pointer;transition:.22s;padding:14px;position:relative;z-index:102}
     .sponsor-toggle:hover{transform:translateY(-2px);box-shadow:var(--softshadow)}
     .sponsor-toggle span{display:block;width:18px;height:2px;border-radius:999px;background:#111111}
-    .sponsor-drawer{position:fixed;top:78px;right:max(24px,calc((100vw - var(--max))/2));min-width:300px;height:auto;overflow:visible;background:#fff;border:1px solid var(--line);border-radius:18px;padding:10px;box-shadow:0 28px 78px rgba(34,30,28,.22);z-index:2147483000}
+    .sponsor-drawer{position:fixed;top:78px;right:max(24px,calc((100vw - var(--max))/2));min-width:300px;height:auto;overflow:visible;background:#fff;border:1px solid var(--line);border-radius:18px;padding:10px;box-shadow:0 28px 78px rgba(34,30,28,.22);z-index:2147483000;display:grid;gap:4px}
     .sponsor-drawer[hidden]{display:none}
     .sponsor-link{display:flex;align-items:center;width:100%;min-height:50px;border:0;background:#ffffff;border-radius:12px;padding:.9rem 1rem;text-align:left;font-family:inherit;font-size:1rem;line-height:1.2;font-weight:900;color:#111111;white-space:nowrap;cursor:pointer;visibility:visible;opacity:1}
     .sponsor-link-text{display:block!important;color:#111111!important;font-size:1rem!important;line-height:1.2!important;font-weight:900!important;visibility:visible!important;opacity:1!important;white-space:nowrap!important}
@@ -149,9 +149,6 @@
     .award-card p{margin:0;color:var(--muted)}
     .heading-link{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border:1px solid var(--line);border-radius:50%;background:#fff;text-decoration:none;font-size:1.2rem;font-weight:950;margin-left:10px;vertical-align:middle}
     .heading-link:hover{transform:translateY(-2px);box-shadow:var(--softshadow)}
-    .contact-card{background:linear-gradient(135deg,#ffffff,#eae5dc);border:1px solid var(--line);border-radius:32px;padding:34px;box-shadow:var(--shadow);display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center}
-    .contact-card p{color:var(--muted);margin:8px 0 0}
-    .contact-actions{display:flex;gap:10px;flex-wrap:wrap}
     dialog{border:0;border-radius:28px;padding:0;max-width:980px;width:min(980px,94vw);box-shadow:0 30px 100px rgba(0,0,0,.26);background:#ffffff;color:var(--ink)}
     dialog::backdrop{background:rgba(24,28,32,.52);backdrop-filter:blur(3px)}
     .modal-body{padding:28px}
@@ -177,6 +174,11 @@
     .sponsor-card span{font-weight:900;color:#3f3833}
     .sponsor-card.dark span{color:#fff}
     .sponsor-note{margin:18px 0 0;color:var(--muted);font-size:.9rem}
+    .contact-dialog{width:min(760px,92vw)}
+    .contact-modal{padding:30px}
+    .contact-modal-card{margin-top:18px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(135deg,#ffffff,#eae5dc);padding:24px;box-shadow:var(--softshadow)}
+    .contact-modal-card p{color:var(--muted);margin:8px 0 0}
+    .contact-modal-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
     .footer{padding:26px 0;color:var(--muted);font-size:.9rem}
     .footer .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
     .visitor-badge{height:20px;width:auto}
@@ -186,8 +188,8 @@
     .reveal.visible{opacity:1;transform:none}
     @media(max-width:980px){.profile-card{order:1}.hero-copy{order:2}}
     @media(max-width:1100px){.nav-links a{font-size:.82rem;padding:.52rem .58rem}.brand strong{font-size:.94rem}}
-    @media(max-width:980px){.menu{display:block}.nav{gap:12px}.nav-links{display:none;position:absolute;top:78px;left:4vw;right:4vw;background:#ffffff;border:1px solid var(--line);border-radius:22px;padding:14px;box-shadow:var(--shadow);flex-direction:column;align-items:flex-start}.nav-links.open{display:flex}.sponsor-drawer{position:absolute;top:calc(100% + 12px);right:0;min-width:270px;box-shadow:var(--shadow);z-index:1000}.hero,.interact,.contact-card{grid-template-columns:1fr}.metrics,.logos,.role-grid,.cards,.pub-list,.sponsor-grid{grid-template-columns:1fr 1fr}.tab-list{position:static;grid-template-columns:1fr 1fr}.cv-chip,.sponsor-toggle{width:46px;height:46px}}
-    @media(max-width:640px){.hero-copy,.profile-card,.contact-card{padding:22px;border-radius:26px}.profile-top{grid-template-columns:1fr}.portrait{width:100%;height:auto;aspect-ratio:1/1;max-width:260px;margin:auto}.focus-grid,.metrics,.logos,.role-grid,.cards,.pub-list,.tab-list,.capability-visuals,.metrology-visuals,.modal-content-grid,.award-card,.sponsor-grid{grid-template-columns:1fr}.metrology-visuals .wide{width:100%}.section-head{display:block}.search{min-width:0;width:100%}.hero-actions .btn,.contact-actions .btn{width:100%}.modal-body,.sponsor-modal{padding:20px}.modal-gallery img{max-height:360px}.brand span:last-child{display:none}.nav-tools{gap:6px}.cv-chip,.sponsor-toggle{width:42px;height:42px}.sponsor-drawer{right:-52px}}
+    @media(max-width:980px){.menu{display:block}.nav{gap:12px}.nav-links{display:none;position:absolute;top:78px;left:4vw;right:4vw;background:#ffffff;border:1px solid var(--line);border-radius:22px;padding:14px;box-shadow:var(--shadow);flex-direction:column;align-items:flex-start}.nav-links.open{display:flex}.sponsor-drawer{position:absolute;top:calc(100% + 12px);right:0;min-width:270px;box-shadow:var(--shadow);z-index:1000}.hero,.interact{grid-template-columns:1fr}.metrics,.logos,.role-grid,.cards,.pub-list,.sponsor-grid{grid-template-columns:1fr 1fr}.tab-list{position:static;grid-template-columns:1fr 1fr}.cv-chip,.sponsor-toggle{width:46px;height:46px}}
+    @media(max-width:640px){.hero-copy,.profile-card{padding:22px;border-radius:26px}.profile-top{grid-template-columns:1fr}.portrait{width:100%;height:auto;aspect-ratio:1/1;max-width:260px;margin:auto}.focus-grid,.metrics,.logos,.role-grid,.cards,.pub-list,.tab-list,.capability-visuals,.metrology-visuals,.modal-content-grid,.award-card,.sponsor-grid{grid-template-columns:1fr}.metrology-visuals .wide{width:100%}.section-head{display:block}.search{min-width:0;width:100%}.hero-actions .btn,.contact-modal-actions .btn{width:100%}.modal-body,.sponsor-modal,.contact-modal{padding:20px}.modal-gallery img{max-height:360px}.brand span:last-child{display:none}.nav-tools{gap:6px}.cv-chip,.sponsor-toggle{width:42px;height:42px}.sponsor-drawer{right:-52px}}
   
     .paper-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
     .paper-link{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);background:var(--ink);color:#fff;text-decoration:none;border-radius:999px;padding:.58rem .82rem;font-weight:850;font-size:.88rem;transition:.2s}
@@ -232,7 +234,6 @@
     .tag{background:#e7dfd4;color:#3f3833}
     .tab-btn.active,.filter.active{background:#3f3833;border-color:#3f3833}
     .paper-link{background:#111111}
-    .contact-card{background:linear-gradient(135deg,#ffffff,#eae5dc);border-color:#d6cec3}
     .hero{background:rgba(255,255,255,.97);border:1px solid #d6cec3;border-radius:28px;box-shadow:0 20px 58px rgba(34,30,28,.10);padding:28px;grid-template-columns:minmax(390px,.92fr) minmax(500px,1.08fr);align-items:start}
     .hero-copy,.profile-card{background:transparent;border:0;box-shadow:none;border-radius:0}
     .hero-copy{padding:16px 8px 8px 18px}
@@ -254,12 +255,13 @@
       <a class="brand" href="#top" aria-label="Pavanbabu Arjunamahanthi home"><span class="mark">PA</span><span><strong>Pavanbabu Arjunamahanthi</strong><span>Semiconductor Packaging &middot; Metrology &middot; FA</span></span></a>
       <button class="menu" type="button" aria-expanded="false">Menu</button>
       <div class="nav-links">
-        <a href="#affiliations">About</a><a href="#experience">Experience</a><a href="#technical-skills">Skills</a><a href="#projects">Projects</a><a href="#publications">Publications</a><a href="#awards">Awards</a><a href="#contact">Contact</a>
+        <a href="#affiliations">About</a><a href="#experience">Experience</a><a href="#technical-skills">Skills</a><a href="#projects">Projects</a><a href="#publications">Publications</a><a href="#awards">Awards</a>
       </div>
       <div class="nav-tools" aria-label="Quick actions">
         <div class="sponsor-nav">
           <button class="sponsor-toggle" type="button" aria-expanded="false" aria-controls="sponsorDrawer" aria-label="Open collaborators and sponsors menu"><span></span><span></span><span></span></button>
           <div class="sponsor-drawer" id="sponsorDrawer" hidden>
+            <button class="sponsor-link" id="openContact" type="button" aria-label="Open Contact"><span class="sponsor-link-text">Contact</span></button>
             <button class="sponsor-link" id="openSponsors" type="button" aria-label="Open Collaborators and Sponsors"><span class="sponsor-link-text">Collaborators &amp; Sponsors</span></button>
           </div>
         </div>
@@ -396,17 +398,29 @@
         </article>
       </div>
     </section>
-
-    <section class="wrap" id="contact">
-      <div class="contact-card reveal">
-        <div><p class="eyebrow">Contact</p><h2 class="section-title">Let&rsquo;s discuss semiconductor process, FA, metrology, or packaging R&D.</h2><p>Available for technical discussions, collaboration, internships-to-industry transitions, and relocation-aligned semiconductor opportunities.</p></div>
-        <div class="contact-actions"><a class="btn accent" href="mailto:pavanbabuarjunamahanthi@gmail.com">Email</a><a class="btn secondary" href="tel:+13529992062">Call +1 352 999 2062</a><a class="btn secondary" target="_blank" rel="noopener" href="https://www.linkedin.com/in/pavanbabu/">LinkedIn</a><a class="btn secondary" target="_blank" rel="noopener" href="https://github.com/Pavanbabu-014">GitHub</a><button class="btn secondary" id="copyEmail" type="button">Copy email</button></div>
-      </div>
-    </section>
   </main>
   <footer class="footer"><div class="wrap"><span>&copy; <span id="year"></span> Pavanbabu Arjunamahanthi &middot; Semiconductor Packaging, Metrology and Failure Analysis Portfolio.</span><img class="visitor-badge" src="https://hits.sh/Pavanbabu-014.github.io.svg?label=Visitors&color=3f3833&labelColor=ebe4da" alt="Visitor count"></div></footer>
   <button class="to-top" aria-label="Back to top">&uarr;</button>
   <dialog id="projectModal"><div class="modal-body"><div class="modal-top"><div><p class="eyebrow" id="modalLabel">Project</p><h3 id="modalTitle">Project details</h3></div><button class="close" type="button" aria-label="Close dialog">&times;</button></div><div id="modalContent"></div></div></dialog>
+  <dialog id="contactModal" class="contact-dialog">
+    <div class="contact-modal">
+      <div class="modal-top">
+        <div><p class="eyebrow">Contact</p><h3>Let&rsquo;s connect.</h3></div>
+        <button class="close contact-close" type="button" aria-label="Close contact dialog">&times;</button>
+      </div>
+      <div class="contact-modal-card">
+        <h3>Semiconductor process, FA, metrology, or packaging R&amp;D</h3>
+        <p>Available for technical discussions, collaboration, internships-to-industry transitions, and relocation-aligned semiconductor opportunities.</p>
+        <div class="contact-modal-actions">
+          <a class="btn accent" href="mailto:pavanbabuarjunamahanthi@gmail.com">Email</a>
+          <a class="btn secondary" href="tel:+13529992062">Call +1 352 999 2062</a>
+          <a class="btn secondary" target="_blank" rel="noopener" href="https://www.linkedin.com/in/pavanbabu/">LinkedIn</a>
+          <a class="btn secondary" target="_blank" rel="noopener" href="https://github.com/Pavanbabu-014">GitHub</a>
+          <button class="btn secondary copy-email" type="button">Copy email</button>
+        </div>
+      </div>
+    </div>
+  </dialog>
   <dialog id="sponsorModal" class="sponsor-dialog">
     <div class="sponsor-modal">
       <div class="modal-top">
@@ -432,12 +446,15 @@
     const menu=document.querySelector('.menu'), navLinks=document.querySelector('.nav-links');
     menu?.addEventListener('click',()=>{const open=navLinks.classList.toggle('open');menu.setAttribute('aria-expanded',open)});
     navLinks?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
-    const sponsorNav=document.querySelector('.sponsor-nav'), sponsorToggle=document.querySelector('.sponsor-toggle'), sponsorDrawer=document.getElementById('sponsorDrawer'), sponsorModal=document.getElementById('sponsorModal');
+    const sponsorNav=document.querySelector('.sponsor-nav'), sponsorToggle=document.querySelector('.sponsor-toggle'), sponsorDrawer=document.getElementById('sponsorDrawer'), sponsorModal=document.getElementById('sponsorModal'), contactModal=document.getElementById('contactModal');
     const closeSponsorDrawer=()=>{if(!sponsorDrawer)return;sponsorDrawer.hidden=true;sponsorToggle?.setAttribute('aria-expanded','false')};
     sponsorToggle?.addEventListener('click',e=>{e.stopPropagation();const open=sponsorDrawer.hidden;sponsorDrawer.hidden=!open;sponsorToggle.setAttribute('aria-expanded',open)});
     document.addEventListener('click',e=>{if(sponsorNav&&!sponsorNav.contains(e.target))closeSponsorDrawer()});
+    document.getElementById('openContact')?.addEventListener('click',()=>{closeSponsorDrawer();contactModal?.showModal()});
     document.getElementById('openSponsors')?.addEventListener('click',()=>{closeSponsorDrawer();sponsorModal?.showModal()});
-    sponsorDrawer?.addEventListener('click',e=>{if(e.target.closest('#openSponsors'))return;closeSponsorDrawer();sponsorModal?.showModal()});
+    sponsorDrawer?.addEventListener('click',e=>{if(e.target.closest('#openContact,#openSponsors'))return;closeSponsorDrawer();contactModal?.showModal()});
+    contactModal?.querySelector('.contact-close')?.addEventListener('click',()=>contactModal.close());
+    contactModal?.addEventListener('click',e=>{const rect=contactModal.getBoundingClientRect(); if(e.clientX<rect.left||e.clientX>rect.right||e.clientY<rect.top||e.clientY>rect.bottom) contactModal.close();});
     sponsorModal?.querySelector('.sponsor-close')?.addEventListener('click',()=>sponsorModal.close());
     sponsorModal?.addEventListener('click',e=>{const rect=sponsorModal.getBoundingClientRect(); if(e.clientX<rect.left||e.clientX>rect.right||e.clientY<rect.top||e.clientY>rect.bottom) sponsorModal.close();});
     const reveals=document.querySelectorAll('.reveal'); const rio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12}); reveals.forEach(e=>rio.observe(e));
@@ -473,7 +490,8 @@
     document.querySelectorAll('[data-modal]').forEach(btn=>btn.addEventListener('click',()=>renderProjectModal(modalData[btn.dataset.modal])));
     dialog?.querySelector('.close').addEventListener('click',()=>dialog.close()); dialog?.addEventListener('click',e=>{const rect=dialog.getBoundingClientRect(); if(e.clientX<rect.left||e.clientX>rect.right||e.clientY<rect.top||e.clientY>rect.bottom) dialog.close();});
     const topBtn=document.querySelector('.to-top'); window.addEventListener('scroll',()=>topBtn.classList.toggle('show',window.scrollY>700)); topBtn.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
-    document.getElementById('copyEmail')?.addEventListener('click',async()=>{try{await navigator.clipboard.writeText('pavanbabuarjunamahanthi@gmail.com');document.getElementById('copyEmail').textContent='Copied';}catch(e){location.href='mailto:pavanbabuarjunamahanthi@gmail.com'}});
+    const copyEmail=async btn=>{try{await navigator.clipboard.writeText('pavanbabuarjunamahanthi@gmail.com');btn.textContent='Copied';}catch(e){location.href='mailto:pavanbabuarjunamahanthi@gmail.com'}};
+    document.querySelectorAll('.copy-email').forEach(btn=>btn.addEventListener('click',e=>copyEmail(e.currentTarget)));
     document.getElementById('year').textContent=new Date().getFullYear();
   </script>
 </body>
