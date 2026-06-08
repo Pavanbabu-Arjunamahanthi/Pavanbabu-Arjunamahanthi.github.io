@@ -43,6 +43,10 @@
     .btn:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(34,30,28,.18)}
     .btn.secondary{background:rgba(255,255,255,.96);color:var(--ink);border-color:var(--line)}
     .btn.accent{background:var(--accent);color:white}
+    .glow-action{position:relative;isolation:isolate;box-shadow:0 0 0 1px rgba(122,109,95,.22),0 12px 30px rgba(63,56,51,.16);animation:softPulse 2.9s ease-in-out infinite}
+    .glow-action:before{content:"";position:absolute;inset:-4px;border-radius:inherit;background:linear-gradient(135deg,rgba(122,109,95,.45),rgba(214,206,195,.72),rgba(63,56,51,.36));filter:blur(13px);opacity:.38;z-index:-1}
+    .glow-action:hover:before{opacity:.58}
+    @keyframes softPulse{0%,100%{box-shadow:0 0 0 1px rgba(122,109,95,.20),0 12px 30px rgba(63,56,51,.14)}50%{box-shadow:0 0 0 4px rgba(122,109,95,.12),0 18px 42px rgba(63,56,51,.24)}}
     .hero{padding:36px 0 28px;display:grid;grid-template-columns:minmax(410px,.98fr) minmax(460px,1.02fr);gap:26px;align-items:stretch}
     .hero-copy,.profile-card{background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:34px;box-shadow:var(--softshadow)}
     .hero-copy{padding:34px 36px}
@@ -130,6 +134,10 @@
     .project-figure.contain{object-fit:contain;padding:8px}
     .project-figure.strip{aspect-ratio:5/1;object-fit:cover}
     .pub-list{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .pub-category{display:grid;gap:14px;grid-column:1/-1}
+    .pub-category h3{margin:18px 0 0;font-size:1.35rem;letter-spacing:-.035em}
+    .pub-category:first-child h3{margin-top:0}
+    .pub-category-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
     .pub-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}.paper-link{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:999px;padding:.52rem .78rem;background:#111111;color:#ffffff;text-decoration:none;font-weight:850;font-size:.86rem}.paper-link.secondary{background:#ffffff;color:#111111}
     .pub{background:rgba(255,255,255,.97);border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:var(--softshadow)}
     .pub[hidden]{display:none}
@@ -191,7 +199,7 @@
     @media(max-width:980px){.profile-card{order:1}.hero-copy{order:2}}
     @media(max-width:1100px){.nav-links a{font-size:.82rem;padding:.52rem .58rem}.brand strong{font-size:.94rem}}
     @media(max-width:980px){.menu{display:block}.nav{gap:12px}.nav-links{display:none;position:absolute;top:78px;left:4vw;right:4vw;background:#ffffff;border:1px solid var(--line);border-radius:22px;padding:14px;box-shadow:var(--shadow);flex-direction:column;align-items:flex-start}.nav-links.open{display:flex}.hero,.interact{grid-template-columns:1fr}.metrics,.logos,.role-grid,.cards,.pub-list,.sponsor-grid{grid-template-columns:1fr 1fr}.tab-list{position:static;grid-template-columns:1fr 1fr}.cv-chip,.sponsor-toggle{width:46px;height:46px}}
-    @media(max-width:640px){.hero-copy,.profile-card{padding:22px;border-radius:26px}.profile-top{grid-template-columns:1fr}.portrait{width:100%;height:auto;aspect-ratio:1/1;max-width:260px;margin:auto}.focus-grid,.metrics,.logos,.role-grid,.cards,.pub-list,.tab-list,.capability-visuals,.metrology-visuals,.modal-content-grid,.award-card,.sponsor-grid{grid-template-columns:1fr}.metrology-visuals .wide{width:100%}.section-head{display:block}.search{min-width:0;width:100%}.hero-actions .btn,.contact-modal-actions .btn{width:100%}.modal-body,.sponsor-modal,.contact-modal,.quick-menu-modal{padding:20px}.modal-gallery img{max-height:360px}.brand span:last-child{display:none}.nav-tools{gap:6px}.cv-chip,.sponsor-toggle{width:42px;height:42px}}
+    @media(max-width:640px){.hero-copy,.profile-card{padding:22px;border-radius:26px}.profile-top{grid-template-columns:1fr}.portrait{width:100%;height:auto;aspect-ratio:1/1;max-width:260px;margin:auto}.focus-grid,.metrics,.logos,.role-grid,.cards,.pub-list,.pub-category-grid,.tab-list,.capability-visuals,.metrology-visuals,.modal-content-grid,.award-card,.sponsor-grid{grid-template-columns:1fr}.metrology-visuals .wide{width:100%}.section-head{display:block}.search{min-width:0;width:100%}.hero-actions .btn,.contact-modal-actions .btn{width:100%}.modal-body,.sponsor-modal,.contact-modal,.quick-menu-modal{padding:20px}.modal-gallery img{max-height:360px}.brand span:last-child{display:none}.nav-tools{gap:6px}.cv-chip,.sponsor-toggle{width:42px;height:42px}}
   
     .paper-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
     .paper-link{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);background:var(--ink);color:#fff;text-decoration:none;border-radius:999px;padding:.58rem .82rem;font-weight:850;font-size:.88rem;transition:.2s}
@@ -274,14 +282,14 @@
         <h1>Metrology and Inspection-driven semiconductor packaging engineer.</h1>
         <p class="lead">I work on inspecting advanced packages and interconnects using optical, Electron microscopy, and acoustic imaging, etc, and have hands-on experience in cleanroom processing and defect analytics to provide practical insight for hybrid bonding and glass interposers towards electronic packaging reliability.</p>
         <div class="hero-actions">
-          <a class="btn accent" href="mailto:pavanbabuarjunamahanthi@gmail.com">Email me</a>
-          <a class="btn secondary" target="_blank" rel="noopener" href="https://www.linkedin.com/in/pavanbabu/">LinkedIn</a>
-          <a class="btn secondary" target="_blank" rel="noopener" href="https://scholar.google.com/citations?user=-tJN2NQAAAAJ&hl=en">Google Scholar</a><a class="btn secondary" target="_blank" rel="noopener" href="https://github.com/Pavanbabu-014">GitHub</a>
+          <a class="btn accent glow-action" href="mailto:pavanbabuarjunamahanthi@gmail.com">Email me</a>
+          <a class="btn secondary glow-action" target="_blank" rel="noopener" href="https://www.linkedin.com/in/pavanbabu/">View my LinkedIn</a>
+          <a class="btn secondary glow-action" target="_blank" rel="noopener" href="https://scholar.google.com/citations?user=-tJN2NQAAAAJ&hl=en">View my Google Scholar</a><a class="btn secondary" target="_blank" rel="noopener" href="https://github.com/Pavanbabu-014">GitHub</a>
         </div>
         <div class="availability" aria-label="Availability and fit">
           <span class="pill"><span class="dot"></span> Gainesville, FL</span>
           <span class="pill">Open to relocation</span>
-          <a class="pill" href="assets/Pavanbabu-Arjunamahanthi-Resume.pdf" target="_blank" rel="noopener noreferrer">Find my Resume</a>
+          <a class="pill glow-action" href="assets/Pavanbabu-Arjunamahanthi-Resume.pdf" target="_blank" rel="noopener noreferrer">Find my Resume</a>
         </div>
       </div>
       <aside class="profile-card reveal" aria-label="Profile card">
@@ -290,7 +298,7 @@
           <div class="profile-summary"><p>Semiconductor researcher and engineer focused on process insights, automated defect inspection, failure analysis, and yield improvement.</p></div>
         </div>
         <div class="focus-grid">
-          <div class="focus-tile"><strong>Current focus</strong><span>Advanced Packaging Metrology, Failure Analysis, Hybrid bonding and Non-destructive inspection.</span></div>
+          <div class="focus-tile"><strong>Current focus</strong><span>Advanced packaging metrology, failure analysis, hybrid bonding, and non-destructive inspection.</span></div>
           <div class="focus-tile"><strong>Core methods</strong><span>SAM &middot; XRM &middot; SEM &middot; FIB &middot; EDS</span></div>
           <div class="focus-tile"><strong>Fabrication</strong><span>Photolithography &middot; PECVD &middot; ALD &middot; DRIE</span></div>
           <div class="focus-tile"><strong>Analysis</strong><span>Python &middot; MATLAB &middot; DOE &middot; JMP</span></div>
@@ -301,7 +309,7 @@
     <section class="wrap metrics reveal" aria-label="Selected impact metrics">
       <div class="metric"><strong data-count="450">0</strong><span>SAM images analyzed across advanced packages</span></div>
       <div class="metric"><strong data-count="20000">0</strong><span>Microbumps segmented and statistically analyzed</span></div>
-      <div class="metric"><strong data-count="20">0</strong><span>Hybrid bonding defect classes structured</span></div>
+      <div class="metric"><strong data-count="17" data-suffix="+">0</strong><span>Hybrid bonding defects classified across 6 material interfaces</span></div>
       <div class="metric"><strong data-count="12">0</strong><span>Publication and conference contributions</span></div>
     </section>
 
@@ -361,20 +369,35 @@
     <section class="wrap" id="publications">
       <div class="section-head reveal"><div><p class="eyebrow">Publications</p><h2>Searchable research output.<a class="heading-link" target="_blank" rel="noopener noreferrer" href="https://scholar.google.com/citations?user=-tJN2NQAAAAJ&hl=en" aria-label="Open Google Scholar profile">↗</a></h2></div><input class="search" id="pubSearch" type="search" placeholder="Search publications, topics, or venues..." aria-label="Search publications"></div>
       <div class="pub-list reveal" id="pubList">
-        <article class="pub" data-paper="chiplet architecture hybrid bonding smta international pdf">
-          <a class="pub-title" href="https://www.researchgate.net/publication/400655986_The_Future_of_Electronics_Packaging_is_Chiplet_Architecture" target="_blank" rel="noopener noreferrer">The Future of Electronics Packaging Is Chiplet Architecture</a>
-          <span>First-authored &middot; SMTA International &middot; Proceedings paper</span></article>
-        <article class="pub"><a class="pub-title" href="https://www.sciencedirect.com/science/article/abs/pii/S092145262400752X" target="_blank" rel="noopener noreferrer">Magnetic properties of hard-soft MnBi/FeNi@C exchange coupled nanostructures via cryo-milling</a><span>First-authored contribution &middot; Physica B: Condensed Matter, 2024</span></article>
-        <article class="pub"><strong>Inspection and Metrology Challenges in Hybrid Bonding Manufacturing</strong><span>ASM-EDFA Magazine &middot; Hybrid bonding and inspection challenges</span></article>
-        <article class="pub"><a class="pub-title" href="https://www.researchgate.net/publication/392638548_MEMS-Enabled_Secure_PCB_Supply_Chain" target="_blank" rel="noopener noreferrer">MEMS-Enabled Secure PCB Supply Chain</a><span>IEEE WMED 2025 &middot; MEMS hardware security and supply-chain assurance</span></article>
-        <article class="pub"><strong>SUBSTRATE-CLOAK: A MEMS-Enabled Reconfigurable Obfuscation Framework for Secure Substrate Interconnects</strong><span>MEMS hardware security &middot; Secure substrate interconnects</span></article>
-        <article class="pub"><a class="pub-title" href="https://imapsource.org/article/147187-nanoelectromechanical-systems-nems-for-hardware-security-in-advanced-packaging" target="_blank" rel="noopener noreferrer">NEMS for Hardware Security in Advanced Packaging</a><span>iMAPS 2025 &middot; Secure advanced packaging systems</span></article>
-        <article class="pub"><a class="pub-title" href="https://www.researchgate.net/publication/395438528_Hardware_Fingerprinting_for_Siph_Assurance_by_Metasurface_based_Density-Controlled_Patterns" target="_blank" rel="noopener noreferrer">Hardware Fingerprinting for SiPh Assurance by Metasurface-based Density-Controlled Patterns</a><span>IEEE RAPID 2025 &middot; Silicon photonics assurance</span></article>
-        <article class="pub"><strong>Predictive Reliability Modeling of Hybrid Bonding through Warpage and Interfacial Defect Correlation</strong><span>IEEE ECTC &middot; Hybrid bonding reliability</span></article>
-        <article class="pub"><a class="pub-title" href="https://link.springer.com/book/10.1007/978-3-031-86102-4" target="_blank" rel="noopener noreferrer">Introduction to Microelectronics Advanced Packaging Assurance</a><span>Springer book contribution &middot; Technical diagrams, editing, and content review</span></article>
-        <article class="pub"><a class="pub-title" href="https://par.nsf.gov/servlets/purl/10600686" target="_blank" rel="noopener noreferrer">Revitalizing Advanced Packaging in America</a><span>Advanced packaging policy and ecosystem perspective</span></article>
-        <article class="pub"><a class="pub-title" href="https://www.researchgate.net/publication/398212481_A_Global_View_Versus_a_US_Focus_on_Outsourced_Assembly_and_Test_OSAT_Facilities_to_Support_Wafer_Level_Packaging" target="_blank" rel="noopener noreferrer">A Global View Versus a US Focus on Outsourced Assembly and Test (OSAT) Facilities to Support Wafer Level Packaging</a><span>OSAT facilities and wafer-level packaging analysis</span></article>
-        <article class="pub"><a class="pub-title" href="https://www.researchgate.net/profile/Pavanbabu-Arjunamahanthi/publication/404800511_An_Update_on_the_Global_View_versus_a_US_Focus_of_Outsourced_Assembly_and_Test_OSAT_Facilities_to_Support_Wafer_Levl_Packaging/links/6a1b2380199152051ebff736/An-Update-on-the-Global-View-versus-a-US-Focus-of-Outsourced-Assembly-and-Test-OSAT-Facilities-to-Support-Wafer-Levl-Packaging.pdf" target="_blank" rel="noopener noreferrer">An Update on the Global View versus a US Focus of Outsourced Assembly and Test (OSAT) Facilities to Support Wafer Levl Packaging</a><span>OSAT facilities update and packaging supply-chain perspective</span></article>
+        <div class="pub-category">
+          <h3>First authored articles</h3>
+          <div class="pub-category-grid">
+            <article class="pub" data-paper="chiplet architecture hybrid bonding smta international pdf">
+              <a class="pub-title" href="https://www.researchgate.net/publication/400655986_The_Future_of_Electronics_Packaging_is_Chiplet_Architecture" target="_blank" rel="noopener noreferrer">The Future of Electronics Packaging Is Chiplet Architecture</a>
+              <span>First-authored &middot; SMTA International &middot; Proceedings paper</span></article>
+            <article class="pub"><a class="pub-title" href="https://par.nsf.gov/servlets/purl/10600686" target="_blank" rel="noopener noreferrer">Revitalizing Advanced Packaging in America</a><span>First-authored article &middot; Advanced packaging policy and ecosystem perspective</span></article>
+            <article class="pub"><a class="pub-title" href="https://www.researchgate.net/publication/398212481_A_Global_View_Versus_a_US_Focus_on_Outsourced_Assembly_and_Test_OSAT_Facilities_to_Support_Wafer_Level_Packaging" target="_blank" rel="noopener noreferrer">A Global View Versus a US Focus on Outsourced Assembly and Test (OSAT) Facilities to Support Wafer Level Packaging</a><span>First-authored article &middot; OSAT facilities and wafer-level packaging analysis</span></article>
+          </div>
+        </div>
+        <div class="pub-category">
+          <h3>Co-authored articles</h3>
+          <div class="pub-category-grid">
+            <article class="pub"><strong>SUBSTRATE-CLOAK: A MEMS-Enabled Reconfigurable Obfuscation Framework for Secure Substrate Interconnects</strong><span>Co-authored article &middot; MEMS hardware security &middot; Secure substrate interconnects</span></article>
+            <article class="pub"><strong>Inspection and Metrology Challenges in Hybrid Bonding Manufacturing</strong><span>Co-authored article &middot; ASM-EDFA Magazine &middot; Hybrid bonding and inspection challenges</span></article>
+            <article class="pub"><a class="pub-title" href="https://www.researchgate.net/publication/392638548_MEMS-Enabled_Secure_PCB_Supply_Chain" target="_blank" rel="noopener noreferrer">MEMS-Enabled Secure PCB Supply Chain</a><span>Co-authored article &middot; IEEE WMED 2025 &middot; MEMS hardware security and supply-chain assurance</span></article>
+            <article class="pub"><a class="pub-title" href="https://www.sciencedirect.com/science/article/abs/pii/S092145262400752X" target="_blank" rel="noopener noreferrer">Magnetic properties of hard-soft MnBi/FeNi@C exchange coupled nanostructures via cryo-milling</a><span>Co-authored article &middot; Physica B: Condensed Matter, 2024</span></article>
+            <article class="pub"><a class="pub-title" href="https://imapsource.org/article/147187-nanoelectromechanical-systems-nems-for-hardware-security-in-advanced-packaging" target="_blank" rel="noopener noreferrer">NEMS for Hardware Security in Advanced Packaging</a><span>Co-authored article &middot; iMAPS 2025 &middot; Secure advanced packaging systems</span></article>
+            <article class="pub"><a class="pub-title" href="https://www.researchgate.net/publication/395438528_Hardware_Fingerprinting_for_Siph_Assurance_by_Metasurface_based_Density-Controlled_Patterns" target="_blank" rel="noopener noreferrer">Hardware Fingerprinting for SiPh Assurance by Metasurface-based Density-Controlled Patterns</a><span>Co-authored article &middot; IEEE RAPID 2025 &middot; Silicon photonics assurance</span></article>
+            <article class="pub"><strong>Predictive Reliability Modeling of Hybrid Bonding through Warpage and Interfacial Defect Correlation</strong><span>Co-authored article &middot; IEEE ECTC &middot; Hybrid bonding reliability</span></article>
+            <article class="pub"><a class="pub-title" href="https://www.researchgate.net/profile/Pavanbabu-Arjunamahanthi/publication/404800511_An_Update_on_the_Global_View_versus_a_US_Focus_of_Outsourced_Assembly_and_Test_OSAT_Facilities_to_Support_Wafer_Levl_Packaging/links/6a1b2380199152051ebff736/An-Update-on-the-Global-View-versus-a-US-Focus-of-Outsourced-Assembly-and-Test-OSAT-Facilities-to-Support-Wafer-Levl-Packaging.pdf" target="_blank" rel="noopener noreferrer">An Update on the Global View versus a US Focus of Outsourced Assembly and Test (OSAT) Facilities to Support Wafer Levl Packaging</a><span>Co-authored article &middot; OSAT facilities update and packaging supply-chain perspective</span></article>
+          </div>
+        </div>
+        <div class="pub-category">
+          <h3>Book Contributions</h3>
+          <div class="pub-category-grid">
+            <article class="pub"><a class="pub-title" href="https://link.springer.com/book/10.1007/978-3-031-86102-4" target="_blank" rel="noopener noreferrer">Introduction to Microelectronics Advanced Packaging Assurance</a><span>Springer book contribution &middot; Technical diagrams, editing, and content review</span></article>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -428,9 +451,11 @@
         <h3>Semiconductor process, FA, metrology, or packaging R&amp;D</h3>
         <p>Available for technical discussions, collaboration, internships-to-industry transitions, and relocation-aligned semiconductor opportunities.</p>
         <div class="contact-modal-actions">
-          <a class="btn accent" href="mailto:pavanbabuarjunamahanthi@gmail.com">Email</a>
+          <a class="btn accent glow-action" href="mailto:pavanbabuarjunamahanthi@gmail.com">Email</a>
           <a class="btn secondary" href="tel:+13529992062">Call +1 352 999 2062</a>
-          <a class="btn secondary" target="_blank" rel="noopener" href="https://www.linkedin.com/in/pavanbabu/">LinkedIn</a>
+          <a class="btn secondary glow-action" target="_blank" rel="noopener" href="https://www.linkedin.com/in/pavanbabu/">View my LinkedIn</a>
+          <a class="btn secondary glow-action" target="_blank" rel="noopener" href="https://scholar.google.com/citations?user=-tJN2NQAAAAJ&hl=en">View my Google Scholar</a>
+          <a class="btn secondary glow-action" target="_blank" rel="noopener noreferrer" href="assets/Pavanbabu-Arjunamahanthi-CV.pdf">View my CV</a>
           <a class="btn secondary" target="_blank" rel="noopener" href="https://github.com/Pavanbabu-014">GitHub</a>
           <button class="btn secondary copy-email" type="button">Copy email</button>
         </div>
@@ -473,10 +498,10 @@
     sponsorModal?.querySelector('.sponsor-close')?.addEventListener('click',()=>sponsorModal.close());
     sponsorModal?.addEventListener('click',e=>{const rect=sponsorModal.getBoundingClientRect(); if(e.clientX<rect.left||e.clientX>rect.right||e.clientY<rect.top||e.clientY>rect.bottom) sponsorModal.close();});
     const reveals=document.querySelectorAll('.reveal'); const rio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12}); reveals.forEach(e=>rio.observe(e));
-    const counters=document.querySelectorAll('[data-count]'); const cio=new IntersectionObserver(es=>es.forEach(entry=>{ if(!entry.isIntersecting)return; const el=entry.target,target=+el.dataset.count; let n=0; const step=Math.max(1,Math.ceil(target/72)); const t=setInterval(()=>{n+=step;if(n>=target){n=target;clearInterval(t)} el.textContent=n.toLocaleString();},18); cio.unobserve(el); }),{threshold:.45}); counters.forEach(e=>cio.observe(e));
+    const counters=document.querySelectorAll('[data-count]'); const cio=new IntersectionObserver(es=>es.forEach(entry=>{ if(!entry.isIntersecting)return; const el=entry.target,target=+el.dataset.count,suffix=el.dataset.suffix||''; let n=0; const step=Math.max(1,Math.ceil(target/72)); const t=setInterval(()=>{n+=step;if(n>=target){n=target;clearInterval(t)} el.textContent=n.toLocaleString()+suffix;},18); cio.unobserve(el); }),{threshold:.45}); counters.forEach(e=>cio.observe(e));
     document.querySelectorAll('.tab-btn').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));btn.classList.add('active');document.getElementById(btn.dataset.tab).classList.add('active');}));
     document.querySelectorAll('.filter').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));btn.classList.add('active');const f=btn.dataset.filter;document.querySelectorAll('.project').forEach(card=>{const cats=card.dataset.category.split(' ');card.classList.toggle('hidden',f!=='all'&&!cats.includes(f));});}));
-    const search=document.getElementById('pubSearch'); search?.addEventListener('input',()=>{const q=search.value.toLowerCase();document.querySelectorAll('#pubList .pub').forEach(p=>p.hidden=!p.textContent.toLowerCase().includes(q));});
+    const search=document.getElementById('pubSearch'); search?.addEventListener('input',()=>{const q=search.value.toLowerCase();document.querySelectorAll('#pubList .pub').forEach(p=>p.hidden=!p.textContent.toLowerCase().includes(q));document.querySelectorAll('#pubList .pub-category').forEach(group=>{group.hidden=q&&![...group.querySelectorAll('.pub')].some(p=>!p.hidden)});});
     const modalData={
       hb:{
         title:'Hybrid bonding cross-section workflow',
