@@ -320,10 +320,15 @@
     .chip-shell,.chip-core,.trace-line{fill:none;stroke:var(--accent);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
     .chip-core{stroke:#817467;stroke-width:1.7}
     .trace-line{stroke:#7c8a91;stroke-width:1.6;opacity:.92}
-    .scan-line{fill:#7c8a91;opacity:.22}
-    .scan-glow{fill:#7c8a91;opacity:.16}
-    .inspection-dot{fill:#51483f;opacity:.72}
-    .signal-wave{fill:none;stroke:#8b7a6b;stroke-width:1.8;stroke-linecap:round;opacity:.85;stroke-dasharray:28 52}
+    .scan-line{fill:#7c8a91;opacity:.22;animation:scanSweep 3.4s ease-in-out infinite}
+    .scan-glow{fill:#7c8a91;opacity:.16;animation:scanSweep 3.4s ease-in-out infinite}
+    .inspection-dot{fill:#51483f;animation:dotPulse 2.4s ease-in-out infinite}
+    .inspection-dot:nth-of-type(2){animation-delay:.45s}
+    .inspection-dot:nth-of-type(3){animation-delay:.9s}
+    .signal-wave{fill:none;stroke:#8b7a6b;stroke-width:1.8;stroke-linecap:round;opacity:.85;stroke-dasharray:28 52;animation:waveTravel 3.2s linear infinite}
+    @keyframes scanSweep{0%,100%{transform:translateX(-36px)}50%{transform:translateX(58px)}}
+    @keyframes dotPulse{0%,100%{opacity:.38;transform:scale(.92);transform-origin:center}50%{opacity:1;transform:scale(1.16);transform-origin:center}}
+    @keyframes waveTravel{to{stroke-dashoffset:-80}}
     .hero-cta-strip{display:flex;align-items:center;gap:6px;margin-top:18px;white-space:nowrap;overflow:visible;padding:4px 2px 6px}
     .hero-cta-strip .hero-actions,.hero-cta-strip .availability{display:contents;margin:0}
     .hero-cta-strip .btn,.hero-cta-strip .pill{flex:0 0 auto;margin:0;padding:.58rem .68rem;font-size:.82rem}
@@ -343,7 +348,7 @@
     @keyframes metrologyTicker{to{transform:translateX(-50%)}}
     @media(max-width:1100px){.hero-title-visual{grid-template-columns:1fr}.inspection-motion{width:150px;max-width:40%;margin:0 0 4px auto}}
     @media(max-width:640px){.inspection-motion{width:132px;max-width:54%;margin:0 auto 6px}.hero-cta-strip{flex-wrap:wrap;white-space:normal;overflow:visible}.hero-cta-strip .btn,.hero-cta-strip .pill{width:100%}.motion-rail{border-radius:18px}.motion-track{gap:24px;animation-duration:22s}}
-    @media(prefers-reduced-motion:reduce){.motion-track{animation:none!important}.reveal{transition:none}}
+    @media(prefers-reduced-motion:reduce){.motion-track,.scan-line,.scan-glow,.inspection-dot,.signal-wave{animation:none!important}.reveal{transition:none}}
   </style>
 </head>
 <body id="top">
@@ -417,10 +422,10 @@
     </div>
 
     <section class="wrap metrics reveal" aria-label="Selected impact metrics">
-      <div class="metric"><strong data-count="450">0</strong><span>SAM images analyzed across advanced packages</span></div>
-      <div class="metric"><strong data-count="20000">0</strong><span>Microbumps segmented and statistically analyzed</span></div>
+      <div class="metric"><strong data-count="450">0</strong><span>SAM Images of microbumps analyzed for defect propagation with an increase in temperature.</span></div>
+      <div class="metric"><strong data-count="20000">0</strong><span>Microbumps analyzed statistically for void propagation analysis with an increase in temperature</span></div>
       <div class="metric"><strong data-count="17" data-suffix="+">0</strong><span>Hybrid bonding defects classified across 6 material interfaces</span></div>
-      <div class="metric"><strong data-count="12">0</strong><span>Publication and conference contributions</span></div>
+      <div class="metric"><strong data-count="11">0</strong><span>Publication and conference contributions</span></div>
     </section>
 
     <section class="wrap" id="affiliations">
@@ -468,7 +473,7 @@
         <div class="cards reveal">
           <article class="project" data-category="metrology data"><img class="project-figure" src="assets/hybrid-inspection-crop.jpg" alt="SEM hybrid bonding inspection montage showing delamination and misalignment"><span class="mini">Metrology + AI</span><h3>Hybrid bonding cross-section workflow</h3><p>Reproducible metallographic preparation for sub-5 &micro;m hybrid bonding interfaces with reduced artifacts and clearer SEM inspection.</p><button class="btn secondary small" data-modal="hb">View details</button></article>
           <article class="project" data-category="metrology data"><span class="mini">SAM inspection</span><h3>Microbump fingerprinting</h3><p>Automated segmentation and statistical analysis of over 20,000 microbumps across 450 SAM images from advanced packages.</p><button class="btn secondary small" data-modal="sam">View details</button></article>
-          <article class="project" data-category="security"><span class="mini">Hardware security</span><h3>MEMS-enabled secure interconnects</h3><p>MEMS-based obfuscation and physical assurance concepts for resisting imaging, probing, and reverse-engineering attacks.</p><button class="btn secondary small" data-modal="mems">View details</button></article>
+          <article class="project" data-category="security"><img class="project-figure contain" src="assets/hardware-security-contributions.png" alt="Hardware security project contributions summary across MEMS secure PCB, SiPh fingerprinting, and NEMS advanced packaging"><span class="mini">Hardware security</span><h3>MEMS-enabled secure interconnects</h3><p>MEMS-based obfuscation and physical assurance concepts for resisting imaging, probing, and reverse-engineering attacks.</p><button class="btn secondary small" data-modal="mems">View details</button></article>
           <article class="project" data-category="fabrication"><img class="project-figure" src="assets/fabrication-working-photos-crop.jpg" alt="Cleanroom fabrication working photos"><span class="mini">Cleanroom</span><h3>PN diode and bi-morph MEMS actuator</h3><p>Fabricated and characterized wafer-level devices using lithography, etching, deposition, plasma cleaning, and electrical testing.</p><button class="btn secondary small" data-modal="fab">View details</button></article>
           <article class="project" data-category="metrology"><img class="project-figure contain" src="assets/glass-interposer-challenges.png" alt="Glass based interposer and substrate challenges diagram"><span class="mini">Glass substrates</span><h3>Glass interposer and TGV inspection</h3><p>Inspection strategy for warpage, cracks, roughness, voids, via-fill non-uniformity, and substrate-originated reliability risks.</p><button class="btn secondary small" data-modal="glass">View details</button></article>
           <article class="project" data-category="data metrology"><img class="project-figure contain" src="assets/hybrid-taxonomy-crop.jpg" alt="Hybrid bonding defect taxonomy table from electron microscopy observations"><span class="mini">Defect taxonomy</span><h3>Hybrid bonding defect classification</h3><p>Structured interface defect classes across Cu&ndash;Cu, dielectric&ndash;dielectric, barrier, Cu&ndash;dielectric, and related failure modes.</p><button class="btn secondary small" data-modal="tax">View details</button></article>
@@ -653,7 +658,7 @@
         ]
       },
       sam:{title:'SAM imaging and microbump fingerprinting',context:'Automated imaging-analysis pipeline for advanced packages, built around segmentation, statistical microbump analysis, imaging-condition comparison, void and delamination identification, and inspection feedback.',points:['Maps acoustic signatures into measurable microbump statistics.','Supports faster review of large SAM image sets.']},
-      mems:{title:'MEMS-enabled secure interconnects',context:'Reconfigurable MEMS-based obfuscation concepts for secure PCB and substrate interconnects, with attention to non-destructive inspection limits and anti-probing assurance.',points:['Connects hardware security goals with package-level inspection constraints.','Frames MEMS structures as active assurance features.']},
+      mems:{title:'MEMS-enabled secure interconnects',context:'Reconfigurable MEMS-based obfuscation concepts for secure PCB and substrate interconnects, with attention to non-destructive inspection limits and anti-probing assurance.',points:['Connects hardware security goals with package-level inspection constraints.','Frames MEMS structures as active assurance features.'],images:[{src:'assets/hardware-security-contributions.png',alt:'Hardware security project contributions summary across MEMS secure PCB, SiPh fingerprinting, and NEMS advanced packaging',caption:'Hardware security contributions spanning MEMS-enabled secure PCB supply chain, SiPh fingerprinting, and NEMS-based advanced packaging assurance.'}]},
       fab:{title:'Semiconductor device and MEMS fabrication',context:'Fabrication of PN junction diode and bi-morph MEMS actuator using lithography, wet and dry etch, diffusion, doping, evaporation, plasma cleaning, PECVD, ALD, DRIE, and device characterization.',points:['Hands-on cleanroom process execution from patterning through characterization.','Documents the fabrication environment and wafer-level work.'],images:[{src:'assets/fabrication-working-photos-crop.jpg',alt:'Cleanroom fabrication working photos',caption:'Working photos from fabrication and wafer-process experience.'}]},
       glass:{title:'Glass interposer and TGV inspection',context:'Metrology review and inspection strategy for glass substrate reliability risks including warpage, cracks, sidewall roughness, voiding, via-fill non-uniformity, and substrate-originated failure modes.',points:['Connects substrate-level defects to downstream package reliability.','Emphasizes inspection planning across optical, acoustic, X-ray, and surface methods.'],images:[{src:'assets/glass-interposer-challenges.png',alt:'Glass based interposer and substrate challenges diagram',caption:'Glass based interposer and substrate challenges: CTE mismatch, fragility, warpage, seaware, dicing variation, TGV wet-etch variation, and yield impact.'}]},
       tax:{title:'Hybrid bonding defect taxonomy',context:'Structured interfacial defect taxonomy for inspection and AI-driven classification across Cu&ndash;Cu, dielectric&ndash;dielectric, barrier&ndash;barrier, Cu&ndash;barrier, Cu&ndash;dielectric, and dielectric&ndash;barrier interfaces.',points:['Gives reviewers a vocabulary for defect origin and inspection labels.','Useful for training datasets, inspection reports, and process-learning loops.'],images:[{src:'assets/hybrid-taxonomy-crop.jpg',alt:'Hybrid bonding defect taxonomy table from electron microscopy observations',caption:'Hybrid bonding defect taxonomy organized by interface type and likely root cause.'}]}
