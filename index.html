@@ -279,6 +279,66 @@
     @media(max-width:980px){.logos{grid-template-columns:1fr}.role-grid{grid-template-columns:1fr 1fr}.logo-card{min-height:190px}.logo-card img{object-position:center center;margin:auto}}
     @media(max-width:980px){.hero{grid-template-columns:1fr;padding:24px}.hero-copy{padding:10px 0 0}.profile-card{padding:0}.profile-top{grid-auto-rows:240px}}
     @media(max-width:640px){.role-grid{grid-template-columns:1fr}.heading-link{width:34px;height:34px;font-size:1rem}.hero{padding:18px;border-radius:24px}.hero .hero-copy,.hero .profile-card{padding:0}.hero .profile-top{grid-template-columns:1fr;grid-auto-rows:auto}.hero .portrait{width:100%;height:auto;aspect-ratio:1/1;max-width:260px;margin:auto}.hero .profile-summary{min-height:220px}.hero .focus-grid{grid-template-columns:1fr}}
+
+    /* Softer professional palette */
+    :root{
+      --bg:#f7f4ef; --surface:#fffdf9; --surface2:#eee7dd; --ink:#1d1b18; --ink2:#34302b; --muted:#6e665d;
+      --line:#ddd4c9; --soft:#f3eee7; --accent:#51483f; --accent2:#7b7065; --blue:#665d53;
+      --success:#85776a; --shadow:0 24px 70px rgba(42,36,31,.11); --softshadow:0 14px 38px rgba(42,36,31,.07);
+    }
+    body{background:var(--bg);color:var(--ink)}
+    .site-header{background:rgba(247,244,239,.94);border-bottom-color:rgba(221,212,201,.9)}
+    .mark{background:linear-gradient(135deg,#51483f,#817467)}
+    .nav-links{background:rgba(255,253,249,.72);border-color:rgba(221,212,201,.82)}
+    .nav-links a{color:var(--accent)}
+    .nav-links a:hover,.quick-menu-action:hover{background:#f1ece5;color:var(--ink)}
+    .sponsor-toggle span{background:var(--ink)}
+    .btn{background:var(--ink);color:#fff}
+    .btn:hover{box-shadow:0 16px 36px rgba(42,36,31,.14)}
+    .btn.accent,.btn.accent.glow-action{background:var(--accent)!important;border-color:var(--accent)!important}
+    .btn.secondary,.btn.secondary.glow-action,.pill,.cv-chip{background:var(--surface)!important;color:var(--ink)!important;border-color:var(--line)!important}
+    .btn.secondary.glow-action:hover,.pill.glow-action:hover,.cv-chip:hover{border-color:#bfb2a4!important}
+    .hero{background:rgba(255,253,249,.97);border-color:var(--line);box-shadow:0 20px 58px rgba(42,36,31,.08)}
+    .hero-copy,.profile-card,.metric,.logo-card,.role-card,.tab-panel,.project,.pub,.award-card,.focus-tile,.sponsor-card,.quick-menu-action,.contact-modal-card,.permissions-card{background:rgba(255,253,249,.97);border-color:var(--line);box-shadow:var(--softshadow)}
+    .profile-summary,.contact-modal-card,.permissions-card{background:linear-gradient(135deg,#fffdf9,#f0eae2 58%,#e9e1d6)}
+    .portrait{border-color:var(--line);box-shadow:0 18px 45px rgba(42,36,31,.11);background:#eee7dd}
+    .board{background:var(--surface2);border-block-color:var(--line)}
+    .tag{background:#e9e1d6;color:var(--accent)}
+    .tab-btn.active,.filter.active,.sponsor-card.dark,.award-mark{background:var(--accent);border-color:var(--accent)}
+    .paper-link{background:var(--accent);border-color:var(--accent)}
+    .paper-link.secondary{background:var(--surface);color:var(--ink);border-color:var(--line)}
+    .logo-card{border-top-color:var(--accent)}
+    .logo-card:nth-child(2){border-top-color:#7c8a91}
+    .logo-card:nth-child(3){border-top-color:#8b7a6b}
+    .capability-visuals img{border-color:#2f2a25}
+    dialog::backdrop{background:rgba(41,37,33,.46)}
+    .to-top{background:var(--accent)}
+    .hero-title-visual{display:grid;grid-template-columns:minmax(0,1fr) 128px;gap:18px;align-items:start}
+    .inspection-motion{width:128px;aspect-ratio:1;border:1px solid var(--line);border-radius:24px;background:linear-gradient(145deg,#fffdf9,#eee7dd);box-shadow:var(--softshadow);overflow:hidden}
+    .inspection-motion svg{width:100%;height:100%;display:block}
+    .chip-shell,.chip-core,.trace-line{fill:none;stroke:var(--accent);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+    .chip-core{stroke:#817467;stroke-width:1.7}
+    .trace-line{stroke:#7c8a91;stroke-width:1.6;opacity:.92}
+    .scan-line{fill:#7c8a91;opacity:.18;animation:scanSweep 3.4s ease-in-out infinite}
+    .scan-glow{fill:#7c8a91;opacity:.14;animation:scanSweep 3.4s ease-in-out infinite}
+    .inspection-dot{fill:#51483f;animation:dotPulse 2.4s ease-in-out infinite}
+    .inspection-dot:nth-of-type(2){animation-delay:.45s}
+    .inspection-dot:nth-of-type(3){animation-delay:.9s}
+    .signal-wave{fill:none;stroke:#8b7a6b;stroke-width:1.8;stroke-linecap:round;opacity:.85;stroke-dasharray:28 52;animation:waveTravel 3.2s linear infinite}
+    @keyframes scanSweep{0%,100%{transform:translateX(-36px)}50%{transform:translateX(58px)}}
+    @keyframes dotPulse{0%,100%{opacity:.38;transform:scale(.92);transform-origin:center}50%{opacity:1;transform:scale(1.16);transform-origin:center}}
+    @keyframes waveTravel{to{stroke-dashoffset:-80}}
+    .hero-cta-strip{display:flex;align-items:center;gap:6px;margin-top:18px;white-space:nowrap;overflow:visible;padding:4px 2px 6px}
+    .hero-cta-strip .hero-actions,.hero-cta-strip .availability{display:contents;margin:0}
+    .hero-cta-strip .btn,.hero-cta-strip .pill{flex:0 0 auto;margin:0;padding:.58rem .68rem;font-size:.82rem}
+    .hero-cta-strip .btn{gap:.34rem}
+    .hero-cta-strip .pill{gap:.34rem}
+    .hero-cta-strip .btn-icon{width:1em;height:1em}
+    .hero-cta-strip .glow-action .btn-icon{width:1.25em;height:1.25em}
+    .hero-cta-strip .dot{width:7px;height:7px}
+    @media(max-width:1100px){.hero-title-visual{grid-template-columns:1fr}.inspection-motion{width:150px;max-width:40%;margin:0 0 4px auto}}
+    @media(max-width:640px){.inspection-motion{width:132px;max-width:54%;margin:0 auto 6px}.hero-cta-strip{flex-wrap:wrap;white-space:normal;overflow:visible}.hero-cta-strip .btn,.hero-cta-strip .pill{width:100%}}
+    @media(prefers-reduced-motion:reduce){.scan-line,.scan-glow,.inspection-dot,.signal-wave{animation:none}}
   </style>
 </head>
 <body id="top">
@@ -302,17 +362,32 @@
     <section class="wrap hero">
       <div class="hero-copy reveal">
         <p class="eyebrow">Advanced Packaging &middot; Failure Analysis &middot; Semiconductor Metrology</p>
-        <h1>Metrology and Inspection-driven semiconductor packaging engineer.</h1>
+        <div class="hero-title-visual">
+          <h1>Metrology and Inspection-driven semiconductor packaging engineer.</h1>
+          <div class="inspection-motion" aria-hidden="true">
+            <svg viewBox="0 0 128 128" role="img">
+              <rect class="scan-glow" x="18" y="14" width="18" height="100" rx="9"></rect>
+              <rect class="scan-line" x="24" y="18" width="4" height="92" rx="2"></rect>
+              <rect class="chip-shell" x="30" y="30" width="68" height="68" rx="10"></rect>
+              <rect class="chip-core" x="47" y="47" width="34" height="34" rx="6"></rect>
+              <path class="trace-line" d="M18 43h12M18 64h12M18 85h12M98 43h12M98 64h12M98 85h12M43 18v12M64 18v12M85 18v12M43 98v12M64 98v12M85 98v12"></path>
+              <path class="signal-wave" d="M37 91c9-12 18-12 27 0s18 12 27 0"></path>
+              <circle class="inspection-dot" cx="49" cy="50" r="3.8"></circle>
+              <circle class="inspection-dot" cx="78" cy="64" r="3.8"></circle>
+              <circle class="inspection-dot" cx="60" cy="79" r="3.8"></circle>
+            </svg>
+          </div>
+        </div>
         <p class="lead">I work on inspecting advanced packages and interconnects using optical, Electron microscopy, and acoustic imaging, etc, and have hands-on experience in cleanroom processing and defect analytics to provide practical insight for hybrid bonding and glass interposers towards electronic packaging reliability.</p>
+        <div class="hero-cta-strip" aria-label="Contact, profile links, and availability">
         <div class="hero-actions">
           <a class="btn accent glow-action" href="mailto:pavanbabuarjunamahanthi@gmail.com"><svg class="btn-icon line icon-email" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4z"></path><path d="m4 7 8 6 8-6"></path></svg>Email me</a>
-          <a class="btn secondary glow-action" target="_blank" rel="noopener" href="https://www.linkedin.com/in/pavanbabu/"><svg class="btn-icon brand icon-linkedin" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.34V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.26 2.37 4.26 5.45v6.29h.03zM5.32 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.1 20.45H3.54V9H7.1v11.45z"></path></svg>View my LinkedIn</a>
-          <a class="btn secondary glow-action" target="_blank" rel="noopener" href="https://scholar.google.com/citations?user=-tJN2NQAAAAJ&hl=en"><svg class="btn-icon brand icon-scholar" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0 0 9.5l5.24 4.27C6.45 11.25 9.02 9.5 12 9.5s5.55 1.75 6.76 4.27L24 9.5 12 0zm0 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"></path></svg>View my Google Scholar</a><a class="btn secondary" target="_blank" rel="noopener" href="https://github.com/Pavanbabu-014"><svg class="btn-icon brand icon-github" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 8.36 22.9c.58.1.79-.25.79-.56v-2.02c-3.22.7-3.9-1.39-3.9-1.39-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.16.08 1.78 1.2 1.78 1.2 1.04 1.77 2.72 1.26 3.38.96.11-.75.41-1.26.74-1.55-2.57-.29-5.27-1.28-5.27-5.72 0-1.26.45-2.3 1.19-3.11-.12-.29-.52-1.47.11-3.07 0 0 .97-.31 3.18 1.19A11.1 11.1 0 0 1 12 6.03c.98 0 1.96.13 2.88.39 2.2-1.5 3.17-1.19 3.17-1.19.63 1.6.24 2.78.12 3.07.74.81 1.19 1.85 1.19 3.11 0 4.45-2.71 5.43-5.29 5.72.42.36.79 1.07.79 2.16v3.05c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"></path></svg>GitHub</a>
+          <a class="btn secondary glow-action" target="_blank" rel="noopener" href="https://www.linkedin.com/in/pavanbabu/"><svg class="btn-icon brand icon-linkedin" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.34V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.26 2.37 4.26 5.45v6.29h.03zM5.32 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.1 20.45H3.54V9H7.1v11.45z"></path></svg>LinkedIn</a>
+          <a class="btn secondary glow-action" target="_blank" rel="noopener" href="https://scholar.google.com/citations?user=-tJN2NQAAAAJ&hl=en"><svg class="btn-icon brand icon-scholar" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0 0 9.5l5.24 4.27C6.45 11.25 9.02 9.5 12 9.5s5.55 1.75 6.76 4.27L24 9.5 12 0zm0 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"></path></svg>Google Scholar</a><a class="btn secondary" target="_blank" rel="noopener" href="https://github.com/Pavanbabu-014"><svg class="btn-icon brand icon-github" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 8.36 22.9c.58.1.79-.25.79-.56v-2.02c-3.22.7-3.9-1.39-3.9-1.39-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.16.08 1.78 1.2 1.78 1.2 1.04 1.77 2.72 1.26 3.38.96.11-.75.41-1.26.74-1.55-2.57-.29-5.27-1.28-5.27-5.72 0-1.26.45-2.3 1.19-3.11-.12-.29-.52-1.47.11-3.07 0 0 .97-.31 3.18 1.19A11.1 11.1 0 0 1 12 6.03c.98 0 1.96.13 2.88.39 2.2-1.5 3.17-1.19 3.17-1.19.63 1.6.24 2.78.12 3.07.74.81 1.19 1.85 1.19 3.11 0 4.45-2.71 5.43-5.29 5.72.42.36.79 1.07.79 2.16v3.05c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"></path></svg>GitHub</a>
         </div>
         <div class="availability" aria-label="Availability and fit">
-          <span class="pill"><span class="dot"></span> Gainesville, FL</span>
-          <span class="pill">Open to relocation</span>
-          <a class="pill glow-action" href="assets/Pavanbabu-Arjunamahanthi-Resume.pdf" target="_blank" rel="noopener noreferrer"><svg class="btn-icon line icon-doc" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l4 4v14H7z"></path><path d="M14 3v5h5"></path><path d="M9.5 13h5"></path><path d="M9.5 17h5"></path></svg>Find my Resume</a>
+          <a class="pill glow-action" href="assets/Pavanbabu-Arjunamahanthi-Resume.pdf" target="_blank" rel="noopener noreferrer"><svg class="btn-icon line icon-doc" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l4 4v14H7z"></path><path d="M14 3v5h5"></path><path d="M9.5 13h5"></path><path d="M9.5 17h5"></path></svg>Resume</a>
+        </div>
         </div>
       </div>
       <aside class="profile-card reveal" aria-label="Profile card">
@@ -337,7 +412,7 @@
     </section>
 
     <section class="wrap" id="affiliations">
-      <div class="section-head reveal"><div><p class="eyebrow">Affiliations</p><h2>Institutions and industry exposure.</h2></div><p>Affiliation cards summarize research training, semiconductor manufacturing exposure, materials engineering foundations, and hands-on laboratory execution.</p></div>
+      <div class="section-head reveal"><div><p class="eyebrow">Affiliations</p><h2>Institutions and industry exposure.</h2></div></div>
       <div class="logos reveal">
         <article class="logo-card"><img src="assets/applied-materials-logo.svg" alt="Applied Materials logo"><div><h3>Applied Materials</h3><p>Process Engineering Intern &middot; Semiconductor manufacturing</p></div></article>
         <article class="logo-card"><img src="assets/uf-logo.svg" alt="University of Florida logo"><div><h3>University of Florida</h3><p>Graduate Research Assistant &middot; SCAN Lab &middot; ECE</p></div></article>
@@ -347,7 +422,7 @@
 
     <section class="board" id="experience">
       <div class="wrap">
-        <div class="section-head reveal"><div><p class="eyebrow">Experience</p><h2>Technical roles presented as project outcomes.</h2></div><p>Each card emphasizes measurable output, tools, and technical context rather than a conventional vertical timeline.</p></div>
+        <div class="section-head reveal"><div><p class="eyebrow">Experience</p><h2>Technical roles presented as project outcomes.</h2></div></div>
         <div class="role-grid reveal">
           <article class="role-card"><div class="role-head"><div class="role-logo"><img src="assets/applied-materials-logo.svg" alt="Applied Materials logo"></div><div><time>Summer 2026</time><h3>Process Engineering Intern &middot; Applied Materials</h3></div></div><p>AI-based defect detection workflow for &micro;-LED wafer inspection and thermal design exploration for direct XPU cooling.</p><div class="tagrow"><span class="tag">Defect detection</span><span class="tag">Process insight</span><span class="tag">Thermal design</span></div></article>
           <article class="role-card"><div class="role-head"><div class="role-logo"><img src="assets/uf-logo.svg" alt="University of Florida logo"></div><div><time>Jan 2025 &ndash; Dec 2025</time><h3>Graduate Research Assistant &middot; SCAN Lab, UF</h3></div></div><p>Physical inspection of electronics, hybrid bonding interfaces, glass interposers, photonic integrated circuits, MEMS, fabrication, and advanced packaging reliability.</p><div class="tagrow"><span class="tag">Hybrid bonding</span><span class="tag">SAM</span><span class="tag">SEM/XRM</span></div></article>
@@ -376,7 +451,7 @@
 
     <section class="board" id="projects">
       <div class="wrap">
-        <div class="section-head reveal"><div><p class="eyebrow">Project explorer</p><h2>Research projects mapped to impact.</h2></div><p>Use filters to navigate projects by metrology, security, fabrication, and data-driven inspection.</p></div>
+        <div class="section-head reveal"><div><p class="eyebrow">Project explorer</p><h2>Research projects mapped to impact.</h2></div></div>
         <div class="controls reveal" role="group" aria-label="Project filters"><button class="filter active" data-filter="all">All</button><button class="filter" data-filter="metrology">Metrology</button><button class="filter" data-filter="security">Security</button><button class="filter" data-filter="fabrication">Fabrication</button><button class="filter" data-filter="data">Data & AI</button></div>
         <div class="cards reveal">
           <article class="project" data-category="metrology data"><img class="project-figure" src="assets/hybrid-inspection-crop.jpg" alt="SEM hybrid bonding inspection montage showing delamination and misalignment"><span class="mini">Metrology + AI</span><h3>Hybrid bonding cross-section workflow</h3><p>Reproducible metallographic preparation for sub-5 &micro;m hybrid bonding interfaces with reduced artifacts and clearer SEM inspection.</p><button class="btn secondary small" data-modal="hb">View details</button></article>
