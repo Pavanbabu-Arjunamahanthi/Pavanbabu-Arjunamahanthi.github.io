@@ -17,7 +17,7 @@
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{margin:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;background:var(--bg); color:var(--ink); line-height:1.62}
+    body{margin:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;background:var(--bg); color:var(--ink); line-height:1.62;overflow-x:hidden}
     a{color:inherit} img{display:block;max-width:100%}
     .wrap{width:min(var(--max),92vw); margin:auto}
     .skip{position:absolute;left:12px;top:12px;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;background:var(--ink);color:white;padding:.75rem 1rem;border-radius:12px;z-index:999}
@@ -320,15 +320,10 @@
     .chip-shell,.chip-core,.trace-line{fill:none;stroke:var(--accent);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
     .chip-core{stroke:#817467;stroke-width:1.7}
     .trace-line{stroke:#7c8a91;stroke-width:1.6;opacity:.92}
-    .scan-line{fill:#7c8a91;opacity:.18;animation:scanSweep 3.4s ease-in-out infinite}
-    .scan-glow{fill:#7c8a91;opacity:.14;animation:scanSweep 3.4s ease-in-out infinite}
-    .inspection-dot{fill:#51483f;animation:dotPulse 2.4s ease-in-out infinite}
-    .inspection-dot:nth-of-type(2){animation-delay:.45s}
-    .inspection-dot:nth-of-type(3){animation-delay:.9s}
-    .signal-wave{fill:none;stroke:#8b7a6b;stroke-width:1.8;stroke-linecap:round;opacity:.85;stroke-dasharray:28 52;animation:waveTravel 3.2s linear infinite}
-    @keyframes scanSweep{0%,100%{transform:translateX(-36px)}50%{transform:translateX(58px)}}
-    @keyframes dotPulse{0%,100%{opacity:.38;transform:scale(.92);transform-origin:center}50%{opacity:1;transform:scale(1.16);transform-origin:center}}
-    @keyframes waveTravel{to{stroke-dashoffset:-80}}
+    .scan-line{fill:#7c8a91;opacity:.22}
+    .scan-glow{fill:#7c8a91;opacity:.16}
+    .inspection-dot{fill:#51483f;opacity:.72}
+    .signal-wave{fill:none;stroke:#8b7a6b;stroke-width:1.8;stroke-linecap:round;opacity:.85;stroke-dasharray:28 52}
     .hero-cta-strip{display:flex;align-items:center;gap:6px;margin-top:18px;white-space:nowrap;overflow:visible;padding:4px 2px 6px}
     .hero-cta-strip .hero-actions,.hero-cta-strip .availability{display:contents;margin:0}
     .hero-cta-strip .btn,.hero-cta-strip .pill{flex:0 0 auto;margin:0;padding:.58rem .68rem;font-size:.82rem}
@@ -337,9 +332,18 @@
     .hero-cta-strip .btn-icon{width:1em;height:1em}
     .hero-cta-strip .glow-action .btn-icon{width:1.25em;height:1.25em}
     .hero-cta-strip .dot{width:7px;height:7px}
+    .motion-rail{width:min(var(--max),92vw);margin:-2px auto 18px;border:1px solid var(--line);border-radius:999px;background:rgba(255,253,249,.82);box-shadow:var(--softshadow);overflow:hidden;position:relative;z-index:1}
+    .motion-rail:before,.motion-rail:after{content:"";position:absolute;top:0;bottom:0;width:82px;z-index:2;pointer-events:none}
+    .motion-rail:before{left:0;background:linear-gradient(90deg,var(--bg),transparent)}
+    .motion-rail:after{right:0;background:linear-gradient(270deg,var(--bg),transparent)}
+    .motion-track{display:flex;gap:34px;width:max-content;padding:.66rem 0;animation:metrologyTicker 30s linear infinite}
+    .motion-track span{font-size:.76rem;text-transform:uppercase;letter-spacing:.16em;font-weight:950;color:#51483f;white-space:nowrap}
+    .motion-track span:nth-child(3n){color:#7c8a91}
+    .motion-rail:hover .motion-track{animation-play-state:paused}
+    @keyframes metrologyTicker{to{transform:translateX(-50%)}}
     @media(max-width:1100px){.hero-title-visual{grid-template-columns:1fr}.inspection-motion{width:150px;max-width:40%;margin:0 0 4px auto}}
-    @media(max-width:640px){.inspection-motion{width:132px;max-width:54%;margin:0 auto 6px}.hero-cta-strip{flex-wrap:wrap;white-space:normal;overflow:visible}.hero-cta-strip .btn,.hero-cta-strip .pill{width:100%}}
-    @media(prefers-reduced-motion:reduce){.scan-line,.scan-glow,.inspection-dot,.signal-wave{animation:none}}
+    @media(max-width:640px){.inspection-motion{width:132px;max-width:54%;margin:0 auto 6px}.hero-cta-strip{flex-wrap:wrap;white-space:normal;overflow:visible}.hero-cta-strip .btn,.hero-cta-strip .pill{width:100%}.motion-rail{border-radius:18px}.motion-track{gap:24px;animation-duration:22s}}
+    @media(prefers-reduced-motion:reduce){.motion-track{animation:none!important}.reveal{transition:none}}
   </style>
 </head>
 <body id="top">
@@ -404,6 +408,13 @@
         </div>
       </aside>
     </section>
+
+    <div class="motion-rail" aria-hidden="true">
+      <div class="motion-track">
+        <span>SAM</span><span>SEM</span><span>XRM</span><span>FIB</span><span>EDS</span><span>Hybrid bonding</span><span>Glass interposers</span><span>Failure analysis</span><span>Metrology</span><span>Cleanroom processing</span>
+        <span>SAM</span><span>SEM</span><span>XRM</span><span>FIB</span><span>EDS</span><span>Hybrid bonding</span><span>Glass interposers</span><span>Failure analysis</span><span>Metrology</span><span>Cleanroom processing</span>
+      </div>
+    </div>
 
     <section class="wrap metrics reveal" aria-label="Selected impact metrics">
       <div class="metric"><strong data-count="450">0</strong><span>SAM images analyzed across advanced packages</span></div>
