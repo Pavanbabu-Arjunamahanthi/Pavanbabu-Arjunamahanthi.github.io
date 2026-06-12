@@ -575,7 +575,7 @@
       </div>
     </section>
   </main>
-  <footer class="footer"><div class="wrap"><div class="footer-copy"><span>&copy; <span id="year"></span> Pavanbabu Arjunamahanthi &middot; Semiconductor Packaging, Metrology and Failure Analysis Portfolio.</span><span class="footer-permissions">Images, diagrams, microscopy results, and technical visuals are included to document research experience and project contributions. Please request permission before reuse, reproduction, or redistribution.</span></div><span class="visitor-badge-shell" data-visitor-counter>Unique visitor tracking</span></div></footer>
+  <footer class="footer"><div class="wrap"><div class="footer-copy"><span>&copy; <span id="year"></span> Pavanbabu Arjunamahanthi &middot; Semiconductor Packaging, Metrology and Failure Analysis Portfolio.</span><span class="footer-permissions">Images, diagrams, microscopy results, and technical visuals are included to document research experience and project contributions. Please request permission before reuse, reproduction, or redistribution.</span></div><span class="visitor-badge-shell" data-visitor-counter></span></div></footer>
   <button class="to-top" aria-label="Back to top">&uarr;</button>
   <dialog id="projectModal"><div class="modal-body"><div class="modal-top"><div><p class="eyebrow" id="modalLabel">Project</p><h3 id="modalTitle">Project details</h3></div><button class="close" type="button" aria-label="Close dialog">&times;</button></div><div id="modalContent"></div></div></dialog>
   <dialog id="quickMenuModal" class="quick-menu-dialog">
@@ -718,22 +718,37 @@
     document.getElementById('permissionsYear').textContent=new Date().getFullYear();
     const visitorCounter=document.querySelector('[data-visitor-counter]');
     if(visitorCounter){
-      const visitorKey='pavan-portfolio-unique-visitor-counted-v1';
-      const badgeUrl='https://hits.sh/Pavanbabu-014.github.io.svg?label=Unique%20visitors&color=3f3833&labelColor=ebe4da';
-      let alreadyCounted=false;
-      try{alreadyCounted=localStorage.getItem(visitorKey)==='true'}catch(e){}
-      if(alreadyCounted){
-        visitorCounter.textContent='Unique visitor tracked';
-      }else{
+      const visitorKey='pavan-portfolio-unique-visitor-counted-v2';
+      const visitorBadgeKey='pavan-portfolio-unique-visitor-badge-v2';
+      const badgeUrl='https://hits.sh/Pavanbabu-014.github.io.svg?label=%20&color=3f3833&labelColor=ebe4da';
+      const renderVisitorBadge=src=>{
         const badge=new Image();
         badge.className='visitor-badge';
         badge.alt='Unique visitor count';
         badge.decoding='async';
         badge.loading='lazy';
         badge.referrerPolicy='no-referrer';
-        badge.src=badgeUrl;
+        badge.src=src;
         visitorCounter.replaceChildren(badge);
-        try{localStorage.setItem(visitorKey,'true')}catch(e){}
+      };
+      let alreadyCounted=false;
+      let savedBadge='';
+      try{alreadyCounted=localStorage.getItem(visitorKey)==='true'}catch(e){}
+      try{savedBadge=localStorage.getItem(visitorBadgeKey)||''}catch(e){}
+      if(alreadyCounted&&savedBadge){
+        renderVisitorBadge(savedBadge);
+      }else{
+        fetch(badgeUrl,{cache:'no-store'})
+          .then(response=>response.ok?response.text():Promise.reject())
+          .then(svg=>{
+            const dataUrl='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+            try{localStorage.setItem(visitorBadgeKey,dataUrl);localStorage.setItem(visitorKey,'true')}catch(e){}
+            renderVisitorBadge(dataUrl);
+          })
+          .catch(()=>{
+            renderVisitorBadge(badgeUrl);
+            try{localStorage.setItem(visitorKey,'true')}catch(e){}
+          });
       }
     }
   </script>
