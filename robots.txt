@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pavanbabu-arjunamahanthi.github.io/sitemap.xml
